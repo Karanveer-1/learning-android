@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Khanna_Manandhar</string>
+
+    <string-array name="continents">
+        <item>Africa</item>
+        <item>Asia</item>
+        <item>Oceania</item>
+        <item>Europe</item>
+        <item>Americas</item>
+    </string-array>
+</resources>
