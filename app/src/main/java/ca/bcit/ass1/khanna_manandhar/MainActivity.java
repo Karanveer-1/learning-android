@@ -25,22 +25,27 @@ import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity {
     private String TAG = MainActivity.class.getSimpleName();
+    private ProgressDialog pDialog;
+    private ArrayList<Country> africaData;
+    private ArrayList<Country> asiaData;
+    private ArrayList<Country> oceaniaData;
+    private ArrayList<Country> europeData;
+    private ArrayList<Country> americasData;
     private static final String SERVICE_URL = "https://restcountries.eu/rest/v2/all" +
             "?fields=name;region;capital;population;area;borders;flag";
-
-    private ProgressDialog pDialog;
-    private ArrayList<Country> africaData = new ArrayList<Country>();
-    private ArrayList<Country> asiaData = new ArrayList<Country>();
-    private ArrayList<Country> oceaniaData = new ArrayList<Country>();
-    private ArrayList<Country> europeData = new ArrayList<Country>();
-    private ArrayList<Country> americasData = new ArrayList<Country>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new GetData().execute();
 
+        africaData = new ArrayList<Country>();
+        asiaData = new ArrayList<Country>();
+        oceaniaData = new ArrayList<Country>();
+        europeData = new ArrayList<Country>();
+        americasData = new ArrayList<Country>();
+
+        new GetData().execute();
         final ListView continents = findViewById(R.id.continentList);
 
         continents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 String clickedContinent = continents.getItemAtPosition(position).toString();
                 Intent intent = new Intent(MainActivity.this, CountryListActivity.class);
+
                 switch(clickedContinent) {
                     case("Africa"):
                         intent.putExtra("data",africaData);
@@ -98,14 +104,14 @@ public class MainActivity extends AppCompatActivity {
                         country.setName(obj.getString("name"));
                         country.setCapital(obj.getString("capital"));
                         country.setRegion(obj.getString("region"));
-                        if (obj.has("area")) {
-                            country.setArea(obj.getDouble("area"));
-                        }
                         country.setPopulation(obj.getLong("population"));
                         country.setFlag(obj.getString("flag"));
                         JSONArray borders = obj.getJSONArray("borders");
+                        if (obj.has("area")) {
+                            country.setArea(obj.getDouble("area"));
+                        }
                         ArrayList<String> bordersList = new ArrayList<String>();
-                        for (int j = 0; i < borders.length(); i++) {
+                        for (int j = 0; j < borders.length(); j++) {
                             bordersList.add(borders.get(j).toString());
                         }
                         country.setBorders(bordersList);
@@ -127,9 +133,7 @@ public class MainActivity extends AppCompatActivity {
                                 americasData.add(country);
                                 break;
                         }
-
                     }
-
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
@@ -148,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(getApplicationContext(),
-                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                "Couldn't get data from server. Check your internet connection!",
                                 Toast.LENGTH_LONG)
                                 .show();
                     }

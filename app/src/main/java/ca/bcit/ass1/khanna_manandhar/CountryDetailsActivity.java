@@ -24,25 +24,20 @@ public class CountryDetailsActivity extends AppCompatActivity {
         int position = intent.getExtras().getInt("position");
 
         TextView name = findViewById(R.id.name);
-        name.setText("Name: " + data.get(position).getName());
-
+        name.setText(getString(R.string.country_name,data.get(position).getName()));
         TextView region = findViewById(R.id.region);
-        region.setText("Continent: " + data.get(position).getRegion());
-
+        region.setText(getString(R.string.Continent,data.get(position).getRegion()));
         TextView capital = findViewById(R.id.capital);
-        capital.setText("Capital: " + data.get(position).getCapital());
-
+        capital.setText(getString(R.string.Capital,data.get(position).getCapital()));
         TextView population = findViewById(R.id.population);
-        population.setText("Population: " + data.get(position).getPopulation());
-
+        population.setText(getString(R.string.Population,data.get(position).getPopulation()));
         TextView area = findViewById(R.id.area);
-        area.setText("Area: " + data.get(position).getArea());
-
+        area.setText(getString(R.string.Area,data.get(position).getArea()));
         TextView borders = findViewById(R.id.borders);
-        borders.setText("Borders: " + data.get(position).getBorders());
+        borders.setText(getString(R.string.Borders,data.get(position).getBorders()));
 
-        WebView webView = (WebView) findViewById(R.id.webView);
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        WebView webView = findViewById(R.id.webView);
+        final ProgressBar progressBar = findViewById(R.id.progressBar);
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
@@ -65,7 +60,6 @@ public class CountryDetailsActivity extends AppCompatActivity {
                 }
             }
         });
-
         webView.loadUrl(data.get(position).getFlag());
 
     }

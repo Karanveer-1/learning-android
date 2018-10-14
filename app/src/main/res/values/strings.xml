@@ -8,4 +8,12 @@
         <item>Europe</item>
         <item>Americas</item>
     </string-array>
+    <string name="Heading">Country</string>
+    <string name="country_name">Name: %1$s</string>
+    <string name="Continent">Continent: %1$s</string>
+    <string name="Capital">Capital: %1$s</string>
+    <string name="Population">Population: %1$d</string>
+    <string name="Area">Area: %1$f</string>
+    <string name="Borders">Borders: %1$s</string>
+
 </resources>

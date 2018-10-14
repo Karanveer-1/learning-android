@@ -8,4 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="tv" parent="@android:style/Widget.TextView">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="heading" parent="@android:style/Widget.TextView">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

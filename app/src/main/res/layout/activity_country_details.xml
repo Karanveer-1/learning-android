@@ -9,36 +9,49 @@
 
 
     <TextView
+        style="@style/heading"
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Heading" />
+
+    <TextView
+        style="@style/tv"
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="" />
 
     <TextView
+        style="@style/tv"
         android:id="@+id/region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="" />
 
     <TextView
+        style="@style/tv"
         android:id="@+id/capital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="" />
 
     <TextView
+        style="@style/tv"
         android:id="@+id/population"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="" />
 
     <TextView
+        style="@style/tv"
         android:id="@+id/area"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="" />
 
     <TextView
+        style="@style/tv"
         android:id="@+id/borders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

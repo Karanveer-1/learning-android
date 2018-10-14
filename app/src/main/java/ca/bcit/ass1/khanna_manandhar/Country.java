@@ -1,10 +1,13 @@
 package ca.bcit.ass1.khanna_manandhar;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Country implements Serializable {
+    private String TAG = MainActivity.class.getSimpleName();
     private String name;
     private String capital;
     private String region;
@@ -52,8 +55,12 @@ public class Country implements Serializable {
     public void setBorders(ArrayList<String> borders){
         this.borders = borders;
     }
-    public ArrayList<String> getBorders(){
-        return this.borders;
+    public String getBorders(){
+        String str = "";
+        for (int i = 0; i < borders.size(); i++) {
+            str += borders.get(i) + ", ";
+        }
+        return str;
     }
     public String toString() {
         return getName();
