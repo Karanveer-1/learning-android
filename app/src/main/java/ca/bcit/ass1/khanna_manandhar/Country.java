@@ -1,6 +1,7 @@
 package ca.bcit.ass1.khanna_manandhar;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Country implements Serializable {
@@ -10,7 +11,7 @@ public class Country implements Serializable {
     private String flag;
     private long population;
     private double area;
-    private List<String> borders;
+    private ArrayList<String> borders;
 
     public void setFlag(String flag){
         this.flag = flag;
@@ -48,10 +49,10 @@ public class Country implements Serializable {
     public double getArea(){
         return this.area;
     }
-    public void setBorders(List<String> borders){
+    public void setBorders(ArrayList<String> borders){
         this.borders = borders;
     }
-    public List<String> getBorders(){
+    public ArrayList<String> getBorders(){
         return this.borders;
     }
     public String toString() {

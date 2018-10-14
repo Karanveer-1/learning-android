@@ -36,6 +36,4 @@ public class CountryListActivity extends ListActivity {
         intent.putExtra("position", position);
         startActivity(intent);
     }
-
-
 }

@@ -3,6 +3,7 @@ package ca.bcit.ass1.khanna_manandhar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity {
     private String TAG = MainActivity.class.getSimpleName();
@@ -25,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ProgressDialog pDialog;
     private ArrayList<Country> africaData = new ArrayList<Country>();
-    private ArrayList<Country> asiaData= new ArrayList<Country>();
+    private ArrayList<Country> asiaData = new ArrayList<Country>();
     private ArrayList<Country> oceaniaData = new ArrayList<Country>();
     private ArrayList<Country> europeData = new ArrayList<Country>();
     private ArrayList<Country> americasData = new ArrayList<Country>();
@@ -89,13 +94,21 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 0; i < countryJsonArray.length(); i++) {
                         Country country = new Country();
                         JSONObject obj = countryJsonArray.getJSONObject(i);
+
                         country.setName(obj.getString("name"));
                         country.setCapital(obj.getString("capital"));
                         country.setRegion(obj.getString("region"));
-                        //country.setFlag(obj.getString("flag"));
-                        //country.setArea(obj.getDouble("area"));
-                        //country.setPopulation(obj.getLong("population"));
-                        //country.setBorders();
+                        if (obj.has("area")) {
+                            country.setArea(obj.getDouble("area"));
+                        }
+                        country.setPopulation(obj.getLong("population"));
+                        country.setFlag(obj.getString("flag"));
+                        JSONArray borders = obj.getJSONArray("borders");
+                        ArrayList<String> bordersList = new ArrayList<String>();
+                        for (int j = 0; i < borders.length(); i++) {
+                            bordersList.add(borders.get(j).toString());
+                        }
+                        country.setBorders(bordersList);
 
                         switch(country.getRegion()) {
                             case("Africa"):
