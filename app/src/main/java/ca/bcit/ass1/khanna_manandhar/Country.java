@@ -56,12 +56,14 @@ public class Country implements Serializable {
         this.borders = borders;
     }
     public String getBorders(){
+        int i;
         String str = "";
-        for (int i = 0; i < borders.size(); i++) {
+        for (i = 0; i < borders.size(); i++) {
             str += borders.get(i) + ", ";
         }
         return str;
     }
+
     public String toString() {
         return getName();
     }

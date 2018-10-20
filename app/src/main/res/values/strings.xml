@@ -15,5 +15,6 @@
     <string name="Population">Population: %1$d</string>
     <string name="Area">Area: %1$f</string>
     <string name="Borders">Borders: %1$s</string>
+    <string name="countryFlag">Flag</string>
 
 </resources>
